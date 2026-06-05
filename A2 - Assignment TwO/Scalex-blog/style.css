@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+}
+
+/* ── Navbar ── */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-brand svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+
+.nav-brand span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 36px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.btn-get-started {
+    padding: 10px 20px;
+    background: #1f1f1f;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ── Hero ── */
+.hero {
+    padding: 60px 48px 30px;
+}
+
+.hero h1 {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+/* ── Filter Tabs ── */
+.filters {
+    padding: 0 48px 36px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+}
+
+.filter-btn.active {
+    background: #e05b2a;
+    color: #fff;
+}
+
+.filter-btn:not(.active) {
+    background: #1f1f1f;
+    color: #ccc;
+}
+
+/* ── Blog Cards ── */
+.cards-grid {
+    padding: 0 48px 60px;
+    display: flex;
+    gap: 20px;
+}
+
+.blog-card {
+    flex: 1;
+    background: #141414;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #1f1f1f;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-body {
+    padding: 20px 22px 24px;
+}
+
+.card-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #2a1508;
+    color: #e07b2a;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.card-date {
+    font-size: 0.82rem;
+    color: #555;
+}

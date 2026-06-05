@@ -1,0 +1,185 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background-color: #FFF8E1;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: #111;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background-color: #111;
+      border-radius: 2px;
+    }
+
+    /* main layout */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* left yellow side */
+    .left {
+      width: 60%;
+      background-color: #FFC107;
+      /* border-radius: 0 40px 40px 0; */
+      padding: 120px 60px 60px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* pokeball watermark */
+    .pokeball {
+      position: absolute;
+      bottom: -80px;
+      left: 20px;
+      width: 280px;
+      height: 280px;
+      border: 10px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+    }
+
+    .pokeball::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -10px;
+      right: -10px;
+      height: 10px;
+      background-color: rgba(0, 0, 0, 0.1);
+      transform: translateY(-50%);
+    }
+
+    .pokeball::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border: 10px solid rgba(0,0,0,0.1);
+    }
+
+    /* text content */
+    .gen-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .pokemon-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 9rem;
+      line-height: 1;
+      color: #111;
+      margin-bottom: 24px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 0.7);
+      max-width: 360px;
+      margin-bottom: 40px;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .counter-line {
+      width: 40px;
+      height: 2px;
+      background-color: #111;
+    }
+
+    .counter-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* right cream side */
+    .right {
+      width: 40%;
+      background-color: #FFF8E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* pokemon image */
+    .pokemon-img {
+      width: 480px;
+      height: auto;
+      position: absolute;
+      left: -180px;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+    }
+
+    /* pagination dots */
+    .dots {
+      position: fixed;
+      right: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #111;
+      opacity: 0.2;
+    }
+
+    .dot.active {
+      opacity: 1;
+    }
