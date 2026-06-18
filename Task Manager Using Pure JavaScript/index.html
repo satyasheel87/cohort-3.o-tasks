@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager | DOM Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-left">
+      <span class="logo">📋 TaskFlow</span>
+      <p class="tagline">Manage your day, one task at a time.</p>
+    </div>
+    <div class="header-right">
+      <!-- Theme toggle stores current theme in data-theme attribute -->
+      <button id="themeToggle" class="theme-btn" data-theme="light">
+        🌙 Dark Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+
+    <!-- ===== TASK CREATION FORM ===== -->
+    <section class="form-section">
+      <h2>Add New Task</h2>
+      <div class="task-form">
+        <input type="text" id="taskTitle" class="input-field" placeholder="Enter task title..."
+          value="My Default Task" />
+
+        <!-- 
+            ATTRIBUTES vs PROPERTIES DEMO:
+            input.value            → returns the CURRENT live value (property)
+            input.getAttribute('value') → returns the INITIAL value set in HTML (attribute)
+            After typing something new, getAttribute('value') still returns "My Default Task"
+            but input.value returns whatever you typed — this is the key difference!
+          -->
+
+        <select id="taskCategory" class="input-field">
+          <option value="work">💼 Work</option>
+          <option value="personal">🏠 Personal</option>
+          <option value="study">📚 Study</option>
+          <option value="health">💪 Health</option>
+          <option value="other">📌 Other</option>
+        </select>
+
+        <button id="addTaskBtn" class="btn btn-add">+ Add Task</button>
+      </div>
+
+      <!-- Search and Filter Controls (Bonus Features) -->
+      <div class="controls-row">
+        <input type="text" id="searchInput" class="input-field search-field" placeholder="🔍 Search tasks..." />
+        <select id="filterCategory" class="input-field filter-field">
+          <option value="all">All Categories</option>
+          <option value="work">💼 Work</option>
+          <option value="personal">🏠 Personal</option>
+          <option value="study">📚 Study</option>
+          <option value="health">💪 Health</option>
+          <option value="other">📌 Other</option>
+        </select>
+        <button id="clearAllBtn" class="btn btn-danger">🗑 Clear All</button>
+      </div>
+    </section>
+
+    <!-- ===== STATS BAR (Bonus) ===== -->
+    <section class="stats-bar">
+      <div class="stat-card">
+        <span class="stat-num" id="totalCount">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-card pending">
+        <span class="stat-num" id="pendingCount">0</span>
+        <span class="stat-label">Pending</span>
+      </div>
+      <div class="stat-card done">
+        <span class="stat-num" id="completedCount">0</span>
+        <span class="stat-label">Completed</span>
+      </div>
+    </section>
+
+    <!-- ===== TASK LIST ===== -->
+    <!-- 
+        Event Delegation: We attach ONE listener to this container (#taskList)
+        instead of attaching listeners on every single task card.
+        This is more efficient and also works for dynamically added tasks.
+      -->
+    <section class="task-section">
+      <h2>Your Tasks</h2>
+      <div id="taskList" class="task-list">
+        <p class="empty-state" id="emptyState">
+          No tasks yet. Add your first task above! 🚀
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== EVENT PROPAGATION DEMO ===== -->
+    <section class="propagation-section">
+      <h2>🔁 Event Propagation Demo</h2>
+      <p class="section-desc">
+        Click the button below and check your browser console (F12) to see
+        <strong>Bubbling</strong> and <strong>Capturing</strong> in action.
+      </p>
+
+      <!-- Bubbling Demo -->
+      <div class="prop-demo">
+        <h3>📤 Event Bubbling</h3>
+        <p class="prop-note">Events travel <strong>UP</strong> the DOM tree (child → parent → grandparent)</p>
+        <!-- id="grandparent" is used in JS to attach capturing listener -->
+        <div id="grandparent" class="box grandparent-box">
+          Grandparent
+          <div id="parent-box" class="box parent-box">
+            Parent
+            <button id="child-btn" class="box child-box">
+              Click Me (Child)
+            </button>
+          </div>
+        </div>
+        <div class="console-output" id="bubbleLog">Console output will appear here...</div>
+      </div>
+
+      <!-- Capturing Demo -->
+      <div class="prop-demo">
+        <h3>📥 Event Capturing</h3>
+        <p class="prop-note">Events travel <strong>DOWN</strong> the DOM tree (grandparent → parent → child)</p>
+        <div id="grandparent-cap" class="box grandparent-box">
+          Grandparent
+          <div id="parent-cap" class="box parent-box">
+            Parent
+            <button id="child-cap" class="box child-box">
+              Click Me (Child)
+            </button>
+          </div>
+        </div>
+        <div class="console-output" id="captureLog">Console output will appear here...</div>
+      </div>
+    </section>
+
+    <!-- ===== BROWSER RENDERING PIPELINE SECTION ===== -->
+    <section class="pipeline-section">
+      <h2>🌐 Browser Rendering Pipeline</h2>
+      <p class="section-desc">
+        How the browser converts your HTML &amp; CSS into what you see on screen.
+      </p>
+
+      <div class="pipeline-flow">
+
+        <div class="pipeline-col">
+          <h4 class="col-label html-label">HTML Side</h4>
+          <div class="pipeline-card html-card">
+            <div class="card-icon">📄</div>
+            <div class="card-title">HTML File</div>
+            <div class="card-desc">Raw HTML text received from server</div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="pipeline-card">
+            <div class="card-icon">🔡</div>
+            <div class="card-title">Tokenization</div>
+            <div class="card-desc">HTML is broken into tokens: start tags, end tags, text, comments</div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="pipeline-card">
+            <div class="card-icon">🔍</div>
+            <div class="card-title">Parsing</div>
+            <div class="card-desc">Tokens are parsed into nodes by the HTML parser</div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="pipeline-card highlight-card">
+            <div class="card-icon">🌲</div>
+            <div class="card-title">DOM Tree</div>
+            <div class="card-desc">A tree of Node objects representing the document structure</div>
+          </div>
+        </div>
+
+        <div class="pipeline-col">
+          <h4 class="col-label css-label">CSS Side</h4>
+          <div class="pipeline-card css-card">
+            <div class="card-icon">🎨</div>
+            <div class="card-title">CSS File</div>
+            <div class="card-desc">Stylesheets linked or embedded in the HTML</div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="pipeline-card">
+            <div class="card-icon">🔡</div>
+            <div class="card-title">Tokenization</div>
+            <div class="card-desc">CSS text split into tokens: selectors, properties, values</div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="pipeline-card">
+            <div class="card-icon">🔍</div>
+            <div class="card-title">Parsing</div>
+            <div class="card-desc">Tokens are parsed into style rules</div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="pipeline-card highlight-card">
+            <div class="card-icon">🎭</div>
+            <div class="card-title">CSSOM Tree</div>
+            <div class="card-desc">CSS Object Model — a tree of style rules applied to elements</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Merge arrow -->
+      <div class="merge-row">
+        <div class="merge-line"></div>
+        <div class="merge-label">DOM Tree + CSSOM Tree</div>
+        <div class="merge-line"></div>
+      </div>
+      <div class="arrow-center">↓</div>
+
+      <div class="pipeline-card final-card">
+        <div class="card-icon">🖼️</div>
+        <div class="card-title">Render Tree</div>
+        <div class="card-desc">
+          Only <strong>visible</strong> nodes are included. Elements with
+          <code>display: none</code> are excluded. The render tree is used for
+          <strong>Layout</strong> (calculating positions &amp; sizes) and
+          <strong>Painting</strong> (drawing pixels on screen).
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Built with ❤️ using Vanilla JS · DOM Explorer Assignment</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
