@@ -222,7 +222,7 @@ I also created detailed notes explaining Redux Toolkit from basics to implementa
 
 👉 **Notion Documentation**
 
-[Notion documentation link here.](https://app.notion.com/p/Redux-Docs-by-Satyasheel-gautam-3a8859b85b8d80c8b8ebee24300760de)
+[Notion documentation link here.](https://app.notion.com/p/React-Redux-Redux-Toolkit-3a8859b85b8d80f0bc91e61f32f9f5ec)
 
 ---
 
