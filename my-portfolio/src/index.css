@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-emerald: #10b981;
+  --color-violet: #8b5cf6;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#0a0e0d] text-gray-200 font-body overflow-x-hidden;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-emerald to-violet bg-clip-text text-transparent;
+}
+
+.glass-card {
+  @apply bg-white/[0.04] border border-white/10 rounded-2xl backdrop-blur-md p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald/60;
+}
