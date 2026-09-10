@@ -17,8 +17,9 @@ const inputCls = cva(
   }
 );
 
+// ✅ FIXED: Omit use karke HTML ke default 'size' prop ko hata diya hai
 export interface FloatingLabelProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   label: string;
   size?: "sm" | "md" | "lg";
 }
