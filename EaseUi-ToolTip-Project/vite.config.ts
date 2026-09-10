@@ -5,18 +5,22 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "EaseUI",
       fileName: (format) => `easeui.${format}.js`,
     },
+
     cssCodeSplit: true,
+
     rollupOptions: {
       external: ["react", "react-dom"],
       output: {
