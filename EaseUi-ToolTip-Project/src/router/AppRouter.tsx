@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createHashRouter, RouterProvider } from "react-router";
 import HomeLayout from "../layouts/HomeLayout";
 import ComponentLayout from "../layouts/ComponentLayout";
 import HomePage from "../pages/HomePage";
@@ -11,10 +11,8 @@ import ToolTip from "@/pages/components/ToolTipPage";
 import Layout from "@/pages/components/Layout";
 import Carousel from "@/pages/components/Carousel";
 
-type Props = {};
-
-const AppRouter = ({}: Props) => {
-  const router = createBrowserRouter([
+const AppRouter = () => {
+  const router = createHashRouter([
     {
       path: "/",
       element: <HomeLayout />,
