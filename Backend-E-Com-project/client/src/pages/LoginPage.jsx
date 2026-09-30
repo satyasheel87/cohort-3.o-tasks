@@ -1,6 +1,6 @@
 // ===useApi main thing===
 import useApi from "../shared/UseApi.js";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { MyAuth } from "../context/AuthContext.jsx";
@@ -9,6 +9,7 @@ const LoginPage = () => {
   const api = useApi();
   const navigate = useNavigate();
   const { error, setError, setUser, setAccessToken } = useContext(MyAuth);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -18,6 +19,8 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     try {
+      setIsLoading(true);
+      setError("");
       const response = await api.post("/auth/login", data);
       // console.log(response.data);
       setUser(response.data.data.user);
@@ -25,6 +28,8 @@ const LoginPage = () => {
       navigate("/home");
     } catch (error) {
       setError(error.response?.data?.message || "Invalid Email Or Password!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -93,9 +98,10 @@ const LoginPage = () => {
           {/* Button */}
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-black font-semibold transition duration-300"
+            disabled={isLoading}
+            className="w-full py-3 rounded-lg bg-orange-500 hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-70 text-black font-semibold transition duration-300"
           >
-            Login
+            {isLoading ? "Logging in..." : "Login"}
           </button>
         </form>
 
