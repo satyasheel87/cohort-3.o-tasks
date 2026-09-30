@@ -116,7 +116,7 @@ export const loginController = async (req, res) => {
 
 // === refreshToken API controller ==
 export const refreshTokenController = async (req, res) => {
-  console.log("COOKIES:", req.cookies);
+  // console.log("COOKIES:", req.cookies);
   const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) {
     return res.status(400).json({
