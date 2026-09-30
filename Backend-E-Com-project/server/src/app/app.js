@@ -5,6 +5,10 @@ import productRouter from "../routers/product.router.js";
 import cors from "cors";
 
 const app = express();
+const isVercelPreviewOrigin = (origin) =>
+  typeof origin === "string" &&
+  /^https:\/\/backend-e-com-project-[a-z0-9-]+-satyasheel87s-projects\.vercel\.app$/.test(origin);
+
 const allowedOrigins = new Set([
   process.env.CLIENT_URL,
   "https://backend-e-com-project.vercel.app",
@@ -18,7 +22,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow server-to-server requests and the deployed/local frontends.
-      if (!origin || allowedOrigins.has(origin)) {
+      if (!origin || allowedOrigins.has(origin) || isVercelPreviewOrigin(origin)) {
         return callback(null, true);
       }
       return callback(new Error("Origin is not allowed by CORS"));
