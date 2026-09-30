@@ -22,7 +22,11 @@ const useApi = () => {
     (response) => response,
     async (error) => {
       if (error.response && error.response.status === 401) {
-        const res = await axios.post("/api/auth/refresh");
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/auth/refresh`,
+          {},
+          { withCredentials: true },
+        );
         console.log(res);
         setAccessToken(res.data.accessToken);
         error.config.headers.Authorization = `Bearer ${res.data.accessToken}`;
