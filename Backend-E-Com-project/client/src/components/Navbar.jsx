@@ -40,7 +40,7 @@ const Navbar = () => {
 
           <a
             onClick={() => {
-              navigate("shop");
+              navigate("/home/shop");
             }}
             className="text-zinc-300 cursor-pointer hover:text-orange-500 transition-colors duration-300"
           >
@@ -49,7 +49,7 @@ const Navbar = () => {
 
           <a
             onClick={() => {
-              navigate("addProduct");
+              navigate("/home/addProduct");
             }}
             className="text-zinc-300 cursor-pointer hover:text-orange-500 transition-colors duration-300"
           >

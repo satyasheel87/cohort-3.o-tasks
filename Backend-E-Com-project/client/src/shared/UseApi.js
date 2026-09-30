@@ -27,9 +27,8 @@ const useApi = () => {
           {},
           { withCredentials: true },
         );
-        console.log(res);
-        setAccessToken(res.data.accessToken);
-        error.config.headers.Authorization = `Bearer ${res.data.accessToken}`;
+        setAccessToken(res.data.data.accessToken);
+        error.config.headers.Authorization = `Bearer ${res.data.data.accessToken}`;
         return axios(error.config);
       }
       return Promise.reject(error);
