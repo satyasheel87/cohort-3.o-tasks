@@ -6,7 +6,7 @@ const useApi = () => {
   const { accessToken, setAccessToken } = useContext(MyAuth);
   // console.log("accessToken:", accessToken);
   const api = axios.create({
-    baseURL: "http://localhost:5173/api",
+    baseURL: import.meta.env.VITE_API_URL,
     withCredentials: true,
   });
 
