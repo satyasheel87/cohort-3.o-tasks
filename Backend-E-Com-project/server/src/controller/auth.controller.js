@@ -44,6 +44,7 @@ export const registerController = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
+    path: "/",
   });
 
   await userModel.findByIdAndUpdate(user._id, {
@@ -97,6 +98,7 @@ export const loginController = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
+    path: "/",
   });
 
   res.status(200).json({
@@ -152,6 +154,7 @@ export const refreshTokenController = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      path: "/",
     });
 
     return res.status(200).json({
