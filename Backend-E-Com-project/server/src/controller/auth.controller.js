@@ -42,6 +42,8 @@ export const registerController = async (req, res) => {
 
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
+    secure: true,
+    sameSite: "none",
   });
 
   await userModel.findByIdAndUpdate(user._id, {
@@ -93,6 +95,8 @@ export const loginController = async (req, res) => {
 
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
+    secure: true,
+    sameSite: "none",
   });
 
   res.status(200).json({
@@ -145,6 +149,8 @@ export const refreshTokenController = async (req, res) => {
 
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
 
     return res.status(200).json({
