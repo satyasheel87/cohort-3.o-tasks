@@ -28,10 +28,7 @@ const AddProductForm = () => {
     },
   });
 
-  // --------------------------------
   // Set existing product for update
-  // --------------------------------
-
   useEffect(() => {
     if (isUpdate && product) {
       reset({
@@ -46,10 +43,7 @@ const AddProductForm = () => {
     }
   }, [isUpdate, product, reset]);
 
-  // --------------------------------
   // Create Product
-  // --------------------------------
-
   const createProduct = async (data) => {
     try {
       const formData = new FormData();
@@ -71,21 +65,17 @@ const AddProductForm = () => {
       await api.post("/products", formData);
 
       alert("Product created successfully");
-
+      
       navigate("/home/shop");
     } catch (error) {
       console.log(error);
-
       alert(
-        error.response?.data?.message ||
-          "Failed to create product",
+        error.response?.data?.message || "Failed to create product",
       );
     }
   };
 
-  // --------------------------------
   // Update Product
-  // --------------------------------
 
   const updateProduct = async (data) => {
     try {
@@ -111,9 +101,7 @@ const AddProductForm = () => {
     }
   };
 
-  // --------------------------------
   // Submit
-  // --------------------------------
 
   const onSubmit = async (data) => {
     if (isUpdate) {

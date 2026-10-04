@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import useApi from "../shared/UseApi";
 
-const ProductCard = ({ product, onDelete }) => {
+const ProductCard = ({ product, getAllProducts }) => {
   const navigate = useNavigate();
   const api = useApi();
 
@@ -10,13 +10,12 @@ const ProductCard = ({ product, onDelete }) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this product?",
     );
-
     if (!confirmDelete) return;
 
     try {
       await api.delete(`/product/${product._id}`);
-
-      onDelete(product._id);
+      await getAllProducts();
+      alert("Product deleted successfully")
     } catch (error) {
       console.log(error);
       alert(error.response?.data?.message || "Failed to delete product");
@@ -34,14 +33,10 @@ const ProductCard = ({ product, onDelete }) => {
 
   return (
     <div className="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-1 hover:border-orange-500">
-
       {/* Image */}
       <div className="relative h-64 overflow-hidden bg-zinc-800">
         <img
-          src={
-            product.images?.[0]?.url ||
-            "https://via.placeholder.com/500"
-          }
+          src={product.images?.[0]?.url || "https://via.placeholder.com/500"}
           alt={product.title}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         />
@@ -53,7 +48,6 @@ const ProductCard = ({ product, onDelete }) => {
 
       {/* Content */}
       <div className="p-5">
-
         <h2 className="truncate text-lg font-semibold text-white">
           {product.title}
         </h2>
@@ -67,14 +61,11 @@ const ProductCard = ({ product, onDelete }) => {
             ₹{product.price}
           </span>
 
-          <span className="text-sm text-zinc-500">
-            Stock: {product.stock}
-          </span>
+          <span className="text-sm text-zinc-500">Stock: {product.stock}</span>
         </div>
 
         {/* Buttons */}
         <div className="mt-5 grid grid-cols-3 gap-2">
-
           {/* View */}
           <button
             onClick={() => navigate(`/home/shop/${product._id}`)}
@@ -98,7 +89,6 @@ const ProductCard = ({ product, onDelete }) => {
           >
             Delete
           </button>
-
         </div>
       </div>
     </div>
